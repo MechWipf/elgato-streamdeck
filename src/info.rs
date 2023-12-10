@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 /// HIDAPI Vendor ID that Elgato products use
 pub const ELGATO_VENDOR_ID: u16 = 0x0fd9;
 
@@ -41,6 +43,22 @@ pub enum Kind {
     Pedal,
     /// Stream Deck Plus
     Plus,
+}
+
+impl Display for Kind {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Kind::Original => write!(f, "Original"),
+            Kind::OriginalV2 => write!(f, "Original V2"),
+            Kind::Mini => write!(f, "Mini"),
+            Kind::Xl => write!(f, "XL"),
+            Kind::XlV2 => write!(f, "XL V2"),
+            Kind::Mk2 => write!(f, "Mk2"),
+            Kind::MiniMk2 => write!(f, "Mini Mk2"),
+            Kind::Pedal => write!(f, "Pedal"),
+            Kind::Plus => write!(f, "Plus"),
+        }
+    }
 }
 
 impl Kind {
